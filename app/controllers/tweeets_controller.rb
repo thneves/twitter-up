@@ -16,17 +16,18 @@ class TweeetsController < ApplicationController
 
   # GET /tweeets/new
   def new
-    @tweeet = Tweeet.new
+    @tweeet = current_user.tweeets.build
   end
 
   # GET /tweeets/1/edit
   def edit
+    
   end
 
   # POST /tweeets
   # POST /tweeets.json
   def create
-    @tweeet = Tweeet.new(tweeet_params)
+    @tweeet = current_user.tweeets.build(tweeet_params)
 
     respond_to do |format|
       if @tweeet.save
